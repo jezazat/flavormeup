@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const UPLOADS_URL = API_BASE_URL.replace(/\/api$/, '') + '/uploads';
+
 export default function ProductManagement({ onProductsUpdate }) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -33,7 +36,7 @@ export default function ProductManagement({ onProductsUpdate }) {
   const loadProducts = async () => {
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:5000/api/products/admin/all', {
+      const response = await fetch(`${API_BASE_URL}/products/admin/all`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
@@ -68,7 +71,7 @@ export default function ProductManagement({ onProductsUpdate }) {
       const formDataUpload = new FormData();
       formDataUpload.append('image', file);
 
-      const response = await fetch('http://localhost:5000/api/products/upload-image', {
+      const response = await fetch(`${API_BASE_URL}/products/upload-image`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -105,7 +108,7 @@ export default function ProductManagement({ onProductsUpdate }) {
     
     // If it looks like an uploaded file (product- prefix), load from /uploads
     if (imageUrl.includes('product-')) {
-      return `http://localhost:5000/uploads/${imageUrl}`;
+      return `${UPLOADS_URL}/${imageUrl}`;
     }
     
     // Otherwise it's a legacy image, load from /images
@@ -149,8 +152,8 @@ export default function ProductManagement({ onProductsUpdate }) {
 
     try {
       const url = editingId 
-        ? `http://localhost:5000/api/products/${editingId}`
-        : 'http://localhost:5000/api/products';
+        ? `${API_BASE_URL}/products/${editingId}`
+        : `${API_BASE_URL}/products`;
 
       const method = editingId ? 'PUT' : 'POST';
 
@@ -189,7 +192,7 @@ export default function ProductManagement({ onProductsUpdate }) {
     if (!window.confirm('คุณแน่ใจว่าจะลบสินค้านี้?')) return;
 
     try {
-      const response = await fetch(`http://localhost:5000/api/products/${productId}`, {
+      const response = await fetch(`${API_BASE_URL}/products/${productId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -213,7 +216,7 @@ export default function ProductManagement({ onProductsUpdate }) {
   const handleUpdateStock = async (productId, newStock) => {
     try {
       const product = products.find(p => p.id === productId);
-      const response = await fetch(`http://localhost:5000/api/products/${productId}`, {
+      const response = await fetch(`${API_BASE_URL}/products/${productId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

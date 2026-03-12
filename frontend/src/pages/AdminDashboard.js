@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { adminAPI, ordersAPI } from '../utils/api';
 import ProductManagement from '../components/ProductManagement';
 
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState('stats');
   const [stats, setStats] = useState(null);
@@ -81,7 +83,7 @@ export default function AdminDashboard() {
   const handleUpdateOrderStatus = async (orderId, newStatus) => {
     try {
       // Call the API to update order status
-      const response = await fetch(`http://localhost:5000/api/orders/${orderId}`, {
+      const response = await fetch(`${API_BASE_URL}/orders/${orderId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

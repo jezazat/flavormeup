@@ -52,9 +52,12 @@ export default function Home() {
       return imageUrl;
     }
     
+    const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+    const UPLOADS_URL = API_BASE_URL.replace(/\/api$/, '') + '/uploads';
+
     // If it looks like an uploaded file (product- prefix), load from /uploads
     if (imageUrl.includes('product-')) {
-      return `http://localhost:5000/uploads/${imageUrl}`;
+      return `${UPLOADS_URL}/${imageUrl}`;
     }
     
     // Otherwise it's a legacy image, load from /images
