@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Mali:wght@200;300;400;500;600;700&display=swap');
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ff9a56 0%, #ff6b6b 50%, #d4515f 100%);
+  padding: 20px;
+  font-family: 'Mali', cursive;
+}
+
+.auth-box {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 420px;
+  font-family: 'Mali', cursive;
+}
+
+.auth-box h2 {
+  text-align: center;
+  color: #000000;
+  margin-bottom: 2rem;
+  font-family: 'Mali', cursive;
+  font-size: 1.8rem;
+}
+
+.error-message {
+  background: #f8d7da;
+  color: #721c24;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  border-left: 4px solid #721c24;
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #000000;
+  font-family: 'Mali', cursive;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #ff9a56;
+  border-radius: 8px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: all 0.3s;
+  font-family: 'Mali', cursive;
+  background-color: #fff9f5;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #ff6b6b;
+  box-shadow: 0 0 8px rgba(255, 107, 107, 0.3);
+}
+
+.auth-box button {
+  width: 100%;
+  padding: 0.85rem;
+  background: linear-gradient(135deg, #ff9a56 0%, #ff6b6b 50%, #d4515f 100%);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Mali', cursive;
+  box-shadow: 0 4px 12px rgba(212, 81, 95, 0.3);
+}
+
+.auth-box button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(212, 81, 95, 0.5);
+}
+
+.auth-box button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.auth-box p {
+  text-align: center;
+  color: #666;
+  margin-top: 1.2rem;
+  font-family: 'Mali', cursive;
+  font-size: 0.95rem;
+}
+
+.auth-box a {
+  color: #ff6b6b;
+  text-decoration: none;
+  font-weight: 600;
+  font-family: 'Mali', cursive;
+}
+
+.auth-box a:hover {
+  text-decoration: underline;
+  color: #d4515f;
+}
