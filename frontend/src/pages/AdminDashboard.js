@@ -68,7 +68,7 @@ export default function AdminDashboard() {
   const handleChangeRole = async (userId, newRole) => {
     try {
       await adminAPI.updateUserRole(userId, newRole);
-      const updatedUsers = users.map(u => 
+      const updatedUsers = users.map(u =>
         u.id === userId ? { ...u, role: newRole } : u
       );
       setUsers(updatedUsers);
@@ -92,7 +92,7 @@ export default function AdminDashboard() {
 
       if (response.ok) {
         // Update local state
-        const updatedOrders = orders.map(o => 
+        const updatedOrders = orders.map(o =>
           o.id === orderId ? { ...o, status: newStatus } : o
         );
         setOrders(updatedOrders);
@@ -181,13 +181,13 @@ export default function AdminDashboard() {
                         {new Date(user.created_at).toLocaleDateString('th-TH')}
                       </td>
                       <td className="px-4 py-3 border-b space-x-2">
-                        <button 
+                        <button
                           onClick={() => handleResetPassword(user.id)}
                           className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-sm font-semibold transition"
                         >
                           รีเซ็ต
                         </button>
-                        <button 
+                        <button
                           onClick={() => handleDeleteUser(user.id)}
                           className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm font-semibold transition"
                         >
@@ -227,12 +227,11 @@ export default function AdminDashboard() {
                         <select
                           value={order.status}
                           onChange={(e) => handleUpdateOrderStatus(order.id, e.target.value)}
-                          className={`px-3 py-1 rounded-full text-sm font-semibold cursor-pointer ${
-                            order.status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
-                            order.status === 'confirmed' ? 'bg-blue-100 text-blue-800' :
-                            order.status === 'completed' ? 'bg-green-100 text-green-800' :
-                            'bg-red-100 text-red-800'
-                          }`}
+                          className={`px-3 py-1 rounded-full text-sm font-semibold cursor-pointer ${order.status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
+                              order.status === 'confirmed' ? 'bg-blue-100 text-blue-800' :
+                                order.status === 'completed' ? 'bg-green-100 text-green-800' :
+                                  'bg-red-100 text-red-800'
+                            }`}
                         >
                           <option value="pending">รอยืนยัน</option>
                           <option value="confirmed">ยืนยันแล้ว</option>
@@ -277,11 +276,10 @@ export default function AdminDashboard() {
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`px-6 py-2 rounded-lg font-semibold transition ${
-              activeTab === tab
+            className={`px-6 py-2 rounded-lg font-semibold transition ${activeTab === tab
                 ? 'bg-gradient-to-r from-amber-600 to-amber-700 text-white shadow-lg'
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-            }`}
+              }`}
           >
             {tab === 'stats' && 'สถิติ'}
             {tab === 'users' && 'ผู้ใช้'}
