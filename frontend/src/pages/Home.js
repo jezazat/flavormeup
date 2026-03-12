@@ -13,6 +13,7 @@ export default function Home() {
 
   useEffect(() => {
     loadProducts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search, category]);
 
   const loadProducts = async () => {

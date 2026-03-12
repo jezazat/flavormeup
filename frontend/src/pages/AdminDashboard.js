@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { adminAPI, productsAPI, ordersAPI } from '../utils/api';
+import { adminAPI, ordersAPI } from '../utils/api';
 import ProductManagement from '../components/ProductManagement';
 
 export default function AdminDashboard() {
@@ -12,12 +12,14 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     loadData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     if (activeTab !== 'products') {
       loadData();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeTab]);
 
   const loadData = async () => {

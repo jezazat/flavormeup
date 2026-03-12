@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { productsAPI } from '../utils/api';
 
 export default function ProductManagement({ onProductsUpdate }) {
   const [products, setProducts] = useState([]);
